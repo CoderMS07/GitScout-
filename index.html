@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GitScout | Advanced Profile Finder</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <div class="bg-shape shape-1"></div>
+  <div class="bg-shape shape-2"></div>
+
+  <nav class="navbar">
+    <div class="logo">
+      <i class="fab fa-github-alt"></i> GitScout
+    </div>
+    <button id="themeToggle" class="theme-btn" aria-label="Toggle Theme">
+      <i class="fas fa-moon"></i>
+    </button>
+  </nav>
+
+  <div class="container">
+    
+    <div class="hero">
+      <h1>Analyze GitHub Profiles <span class="highlight">Like a Pro</span></h1>
+      <p>Enter a username to visualize language statistics, sort repositories, and view detailed profile insights in seconds.</p>
+    </div>
+
+    <div class="search-section">
+      <div class="search-bar">
+        <i class="fas fa-search"></i>
+        <input id="usernameInput" type="text" placeholder="Search GitHub username..." autocomplete="off"/>
+        <button onclick="getProfile()">Search</button>
+      </div>
+    </div>
+
+    <div id="errorMsg" class="error-msg hidden"></div>
+
+    <main id="mainContent" class="hidden">
+      
+      <aside class="profile-sidebar">
+        <div id="profileData"></div>
+        <div class="chart-container">
+          <canvas id="langChart"></canvas>
+        </div>
+      </aside>
+
+      <section class="repo-content">
+        <div class="repo-filter-bar">
+          <h2>Repositories <span id="repoCount" class="badge">0</span></h2>
+          <input type="text" id="filterInput" placeholder="Filter by name..." oninput="filterRepos()">
+        </div>
+        <div id="reposGrid" class="repos-grid"></div>
+      </section>
+
+    </main>
+    
+    <div id="loader" class="loader hidden">
+      <div class="spinner"></div>
+    </div>
+
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
